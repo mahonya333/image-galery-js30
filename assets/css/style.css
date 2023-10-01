@@ -1,0 +1,151 @@
+html {
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 1.4px;
+  outline: none;
+}
+
+address {
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  font-size: 1.4px;
+}
+
+img,
+video {
+  height: 100%;
+  max-width: 100%;
+}
+
+picture {
+  display: flex;
+}
+
+label {
+  cursor: pointer;
+  user-select: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote,
+body,
+dd,
+dl,
+dt,
+fieldset,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+html,
+iframe,
+legend,
+li,
+ol,
+p,
+pre,
+textarea,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+input[placeholder] {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: transparent;
+}
+
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  background: linear-gradient(
+    45deg,
+    #000,
+    30%,
+    var(--main-color-opacity),
+    40%,
+    #000,
+    70%,
+    var(--main-color-opacity),
+    80%,
+    #000
+  );
+  opacity: 0.5;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  padding: 20px;
+  background-color: palegreen;
+  position: relative;
+}

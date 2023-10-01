@@ -1,0 +1,42 @@
+.footer {
+    border-top: 2px solid var(--main-color);
+    box-shadow: 0 0 20px 2px var(--main-color);
+    padding: 10px 0;
+    background: linear-gradient(45deg, #000, 50%, var(--main-color-opacity), 60%, #000, 90%, var(--main-color-opacity));
+}
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer__copy {
+    color: var(--main-color);
+}
+
+.footer__github {
+    display: flex;
+    align-items: center;
+}
+
+.footer__github:hover .footer__github-icon {
+    fill: #82b7b5;
+}
+
+.footer__github:hover .footer__github-username {
+    color: #82b7b5;
+}
+
+.footer__github-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer__github-username {
+    color: #000;
+    transition: all 0.3s ease-in-out;
+}

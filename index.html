@@ -3,21 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>audio player</title>
+    <title>image galery</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
   </head>
 
   <body>
     <div class="site-wrapper">
+      <header class="header">
+        <div class="container">
+          <div class="header__inner">
+            <div class="header__logo">
+              <a class="header__logo-link" href="#">
+                 <span>Unsplash</span> API
+              </a>
+            </div>
+  
+            <form class="header__search-form" action="#" id="searchForm">
+              <input class="header__search-input" id="headerSearchInput" type="search" autofocus autocomplete="off" placeholder="Search your image">
+              <button class="btn header__search-btn" id="searchBtn" type="button">
+                <img src="./assets/img/magnify.svg" width="20px" height="20px" alt="search">
+              </button>
+            </form>
+          </div>
+        </div>
+      </header>
       <main class="main">
-        <div class="overlay"></div>
+        <div class="main__images-wrapper" id="imagesWrapper">
+
+        </div>
       </main>
 
       <footer class="footer">
         <div class="container">
           <div class="footer__inner">
-            <p class="footer__copy">Copyright © 2022 All rights reserved.</p>
+            <p class="footer__copy">Copyright © 2023 All rights reserved.</p>
 
             <a
               class="footer__github"

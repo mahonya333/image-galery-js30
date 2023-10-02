@@ -1,106 +1,67 @@
 window.addEventListener("DOMContentLoaded", () => {
+    const url = 'https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=landscape&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
+    const searchBtn = document.getElementById("searchBtn");
+    const searchForm = document.getElementById('searchForm');
+    const imagesWrapper = document.getElementById('imagesWrapper');
+    const headerSearchInput = document.getElementById('headerSearchInput');
 
+    searchBtn.addEventListener('click', search);
 
-
-
-
-
-  function initializtionContent() {
-  }
-
-  initializtionContent();
-});
-
-/* audio.addEventListener("loadeddata", () => {
-    audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
-    audio.volume = musicVolume;
-}, false); */
-
-// Possible improvements:
-// - Change timeline and volume slider into input sliders, reskinned
-// - Change into Vue or React component
-// - Be able to grab a custom title instead of "Music Song"
-// - Hover over sliders to see preview of timestamp/volume change
-
-/* const audioPlayer = document.querySelector(".audio-player");
-
-audio.addEventListener(
-    "loadeddata",
-    () => {
-        audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(
-            audio.duration
-        );
-        audio.volume = .75;
-    },
-    false
-);
-
-//click on timeline to skip around
-const timeline = audioPlayer.querySelector(".timeline");
-timeline.addEventListener("click", e => {
-    const timelineWidth = window.getComputedStyle(timeline).width;
-    const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
-    audio.currentTime = timeToSeek;
-}, false);
-
-//click volume slider to change volume
-const volumeSlider = audioPlayer.querySelector(".controls .volume-slider");
-volumeSlider.addEventListener('click', e => {
-    const sliderWidth = window.getComputedStyle(volumeSlider).width;
-    const newVolume = e.offsetX / parseInt(sliderWidth);
-    audio.volume = newVolume;
-    audioPlayer.querySelector(".controls .volume-percentage").style.width = newVolume * 100 + '%';
-}, false)
-
-//check audio percentage and update time accordingly
-setInterval(() => {
-    const progressBar = audioPlayer.querySelector(".progress");
-    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-    audioPlayer.querySelector(".time .current").textContent = getTimeCodeFromNum(
-        audio.currentTime
-    );
-}, 500);
-
-//toggle between playing and pausing on button click
-const playBtn = audioPlayer.querySelector(".controls .toggle-play");
-playBtn.addEventListener(
-    "click",
-    () => {
-        if (audio.paused) {
-            playBtn.classList.remove("play");
-            playBtn.classList.add("pause");
-            audio.play();
-        } else {
-            playBtn.classList.remove("pause");
-            playBtn.classList.add("play");
-            audio.pause();
+    /* request to server function */
+    async function getImages(url) {
+        try {
+            const response = await fetch(url);
+            const dataJson = await response.json();
+            return dataJson.results;
+        } catch (error) {
+            console.log(error);
+            return [];
         }
-    },
-    false
-);
-
-audioPlayer.querySelector(".volume-button").addEventListener("click", () => {
-    const volumeEl = audioPlayer.querySelector(".volume-container .volume");
-    audio.muted = !audio.muted;
-    if (audio.muted) {
-        volumeEl.classList.remove("icono-volumeMedium");
-        volumeEl.classList.add("icono-volumeMute");
-    } else {
-        volumeEl.classList.add("icono-volumeMedium");
-        volumeEl.classList.remove("icono-volumeMute");
     }
+
+    /* searching listener */
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        search();
+    })
+
+    /* remove last results */
+    function removeImagesResult() {
+        while (imagesWrapper.firstChild) {
+            imagesWrapper.removeChild(imagesWrapper.firstChild);
+        }
+    }
+
+    /* search function */
+    function search() {
+        removeImagesResult();
+        showImagesResult();
+    }
+
+    function addImages(arrayImg) {
+        arrayImg.map((elem, index) => {
+            const imgSrc = elem.urls.regular;
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `img ${index}`;
+            img.id = elem.id;
+            imagesWrapper.append(img);
+        });
+    }
+
+    async function showImagesResult() {
+        let newUrl = '';
+        const requestText = headerSearchInput.value;
+
+        if (requestText.trim() == '') {
+            newUrl = url;
+        } else {
+            newUrl = `https://api.unsplash.com/search/photos?query=${requestText}&per_page=30&orientation=landscape&client_id=ys_OSYX6mtTO91uGO1x_cMkDNKeJb0Z8OdYs_PI07_g`;
+        }
+
+        let newImagesArray = await getImages(newUrl);
+        addImages(newImagesArray);
+    }
+
+    showImagesResult();
 });
-
-//turn 128 seconds into 2:08
-function getTimeCodeFromNum(num) {
-    let seconds = parseInt(num);
-    let minutes = parseInt(seconds / 60);
-    seconds -= minutes * 60;
-    const hours = parseInt(minutes / 60);
-    minutes -= hours * 60;
-
-    if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
-    return `${String(hours).padStart(2, 0)}:${minutes}:${String(
-        seconds % 60
-    ).padStart(2, 0)}`;
-} */

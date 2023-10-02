@@ -112,40 +112,22 @@ input[placeholder] {
 }
 
 .container {
+  max-width: 1600px;
+  width: 100%;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 0;
-  background: linear-gradient(
-    45deg,
-    #000,
-    30%,
-    var(--main-color-opacity),
-    40%,
-    #000,
-    70%,
-    var(--main-color-opacity),
-    80%,
-    #000
-  );
-  opacity: 0.5;
+  margin: 0 auto;
 }
 
 .main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex: 1 0 auto;
   padding: 20px;
-  background-color: palegreen;
+  background-color: green;
   position: relative;
+}
+
+.main__images-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }

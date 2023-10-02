@@ -1,8 +1,7 @@
 .footer {
-    border-top: 2px solid var(--main-color);
-    box-shadow: 0 0 20px 2px var(--main-color);
+    box-shadow: 0px 0px 10px 1px #000;
     padding: 10px 0;
-    background: linear-gradient(45deg, #000, 50%, var(--main-color-opacity), 60%, #000, 90%, var(--main-color-opacity));
+    z-index: 1;
 }
 
 .footer__inner {
@@ -13,7 +12,7 @@
 }
 
 .footer__copy {
-    color: var(--main-color);
+    
 }
 
 .footer__github {
